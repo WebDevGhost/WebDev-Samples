@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+        .rounded-body {
+            background-color: #141414;
+            border-radius: 16px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .rounded-body img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        h4 {
+            margin: 20px 0 10px;
+        }
+        small {
+            color: #aaaaaa;
+        }
+        .input-bar {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            border: none;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+        .input-bar img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .input-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            color: #ffffff;
+            font-size: 14px;
+            flex: 1;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            color: #ffffff;
+            cursor: pointer;
+            width: 48%;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #292929;
+        }
+        .hyperlink-text {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .hyperlink-text a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        .hyperlink-text a:hover {
+            text-decoration: underline;
+        }
+        .footer-text {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        .footer-icons img {
+            width: 30px;
+            height: auto;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e1e;
+            border-radius: 16px;
+            text-align: center;
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+        }
+        .popup button {
+            background-color: #292929;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #3a3a3a;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="rounded-body">
+        <img src="header-image.png" alt="Logo">
+        <h4>Login</h4>
+        <small>Log in with credentials or via a provider.</small>
+        
+        <br>
+        <br>
+        
+        <div class="input-bar">
+            <img src="username.png" alt="User Icon">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-bar">
+            <img src="password.png" alt="Password Icon">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="handleLogin()">Login</button>
+            <button class="button" onclick="redirectToAnotherPage()">Sign up</button>
+        </div>
+
+        <p class="hyperlink-text">
+            <a href="PASSWORD RESET PAGE URL GOES HERE" target="_blank">Forgot your password?</a>
+        </p>
+        
+        <br>
+        
+        <p class="footer-text">Or continue with</p>
+        <div class="footer-icons">
+            <img src="google.png" alt="Google" onclick="redirectTo('https://google.com')">
+            <img src="facebook.png" alt="Facebook" onclick="redirectTo('https://facebook.com')">
+            <img src="instagram.png" alt="Instagram" onclick="redirectTo('https://instagram.com')">
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <p>Invalid credentials, please try again!</p>
+        <button onclick="closePopup()">Understood</button>
+    </div>
+
+    <script>
+        const validUsername = "USERNAME GOES HERE";
+        const validPassword = "PASSWORD GOES HERE";
+
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === validUsername && password === validPassword) {
+                window.location.href = "REDIRECTION PAGE GOES HERE";
+            } else {
+                showPopup();
+            }
+        }
+
+        function redirectToAnotherPage() {
+            window.location.href = "SIGN UP PAGE URL GOES HERE";
+        }
+
+        function redirectTo(url) {
+            window.open(url, '_blank');
+        }
+
+        function showPopup() {
+            document.getElementById('popup').style.display = "block";
+            document.getElementById('overlay').style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = "none";
+            document.getElementById('overlay').style.display = "none";
+        }
+    </script>
+</body>
+</html>
